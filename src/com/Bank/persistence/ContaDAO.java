@@ -29,7 +29,8 @@ public class ContaDAO {
 				
 				AgenciaDAO agencia = new AgenciaDAO();
 				Conta.setAgencia(agencia.getAgencia(rs.getInt("agencia_fk")));
-
+				
+				connection.close();
 				return Conta;
 
 			}
@@ -62,6 +63,8 @@ public class ContaDAO {
 				Contas.add(Conta);
 			
 			}
+			
+			connection.close();
 			return Contas;
 
 
@@ -103,6 +106,7 @@ public class ContaDAO {
 			ps.setInt(4, Conta.getId());
 			int i = ps.executeUpdate();
 			if(i ==1) {
+				connection.close();
 				return true;
 			}
 			
