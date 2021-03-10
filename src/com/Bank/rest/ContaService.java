@@ -105,6 +105,21 @@ public class ContaService {
 			
 		}
 	}
+	
+
+	@Path("get/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	@GET
+	public Response ContaGet(@PathParam("id") Integer id) {
+		try {
+			Conta conta = new Conta();
+			conta = dao.getConta(id);
+			return Response.status(200).entity(conta).build();
+
+		} catch (Exception e) {
+			throw new WebApplicationException(500);
+		}
+	}
 
 
 	

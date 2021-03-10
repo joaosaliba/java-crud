@@ -58,7 +58,6 @@ public class AgenciaDAO {
 
 				agencias.add(agencia);
 				
-
 			}
 			connection.close();
 
@@ -77,10 +76,9 @@ public class AgenciaDAO {
 			ps.setString(2, agencia.getRazao_social());
 			ps.setString(3, agencia.getEndereco());
 			ps.setString(4, agencia.getGerente());
-			int i = ps.executeUpdate();
-			if (i == 1) {
+			ps.executeUpdate();
+			connection.close();
 				return true;
-			}
 		} catch (SQLException ex) {
 			ex.printStackTrace();
 		} 
@@ -97,11 +95,9 @@ public class AgenciaDAO {
 			ps.setString(3, agencia.getEndereco());
 			ps.setString(4, agencia.getGerente());
 			ps.setInt(5, agencia.getId());
-			int i = ps.executeUpdate();
-			if(i ==1) {
+			ps.executeUpdate();
 				connection.close();
 				return true;
-			}
 			
 		}catch( SQLException ex){
 			ex.printStackTrace();
@@ -114,11 +110,9 @@ public class AgenciaDAO {
 		Connection connection = ConnectionManager.getConnection();
 		try {
 			Statement st = connection.createStatement();
-			int i = st.executeUpdate("DELETE FROM Agencia WHERE agencia_id =" + id);
-			if (i == 1) {
+			st.executeUpdate("DELETE FROM Agencia WHERE agencia_id =" + id);
 				connection.close();
 				return true;
-			}
 		} catch (SQLException ex) {
 			ex.printStackTrace();
 		} 

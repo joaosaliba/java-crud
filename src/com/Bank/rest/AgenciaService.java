@@ -49,7 +49,9 @@ public class AgenciaService {
 	@POST
 	public Response AgenciaCreate(Agencia Agencia) {
 		try {
+		
 			dao.insertAgencia(Agencia);
+			
 			return Response.status(200).entity("Cadastrado").build();
 			 
 		}catch(Exception e){
@@ -103,8 +105,6 @@ public class AgenciaService {
 			return Response.status(200).entity(isOk).build();
 		}catch (Exception e ) {
 			throw new WebApplicationException(500);
-		}finally {
-			
 		}
 	}
 
