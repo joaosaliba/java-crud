@@ -8,6 +8,7 @@
 	<packaging>war</packaging>
 	<dependencies>
 
+
 		<!--JDBCConnector -->
 		<dependency>
 			<groupId>mysql</groupId>
