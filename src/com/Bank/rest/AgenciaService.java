@@ -112,9 +112,10 @@ public class AgenciaService {
 	@Produces(MediaType.APPLICATION_JSON)
 	@GET
 	public Response AgenciaGet(@PathParam("id") Integer id) {
+		Agencia  agencia = new Agencia();
 		try {
-			dao.getAgencia(id);
-			return Response.status(200).entity("  com Sucesso").build();
+			agencia =dao.getAgencia(id);
+			return Response.status(200).entity(agencia).build();
 
 		} catch (Exception e) {
 			throw new WebApplicationException(500);
