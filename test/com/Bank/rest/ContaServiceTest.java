@@ -19,8 +19,8 @@ public class ContaServiceTest {
 	private static ContaService service;
 	
 	
-	private static Integer id_conta = 2;
-	private static Integer id_agencia =1;
+	private static Agencia Agencia = Mockito.mock(Agencia.class);
+	private static Conta Conta= Mockito.mock(Conta.class);
 	
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
@@ -40,8 +40,8 @@ public class ContaServiceTest {
 	
 	@Test
 	void testContaCreate() {
-		Agencia Agencia = new Agencia(id_agencia,2525,"Banco Bom","Rua das pedras","Lazinho");
-		Conta Conta= new Conta(id_conta,Agencia,"Felipe", 30000.00f);
+//		Agencia Agencia = new Agencia(Agencia.,2525,"Banco Bom","Rua das pedras","Lazinho");
+		Conta Conta= new Conta(1,Agencia,"Felipe", 30000.00f);
 		
 		Response response = service.ContaCreate(Conta);
 		
@@ -50,23 +50,23 @@ public class ContaServiceTest {
 	
 	@Test
 	void testContaGet() {
-		Response response = service.ContaGet(id_conta);
+		Response response = service.ContaGet(Conta.getId());
 		assertTrue(response.getStatusInfo().getStatusCode() == Status.OK.getStatusCode());
 	}
 
 
 	@Test
 	void testContapdate() {
-		Agencia Agencia = new Agencia(id_agencia,3333,"Banco Atualizado","Rua das conchas","Jubiscreu");
-		Conta Conta= new Conta(id_conta,Agencia,"Eduardo", 30000.00f);
-		Response response = service.ContaUpdate(id_conta, Conta);
+//		Agencia Agencia = new Agencia(1,3333,"Banco Atualizado","Rua das conchas","Jubiscreu");
+		Conta Conta= new Conta(1,Agencia,"Eduardo", 30000.00f);
+		Response response = service.ContaUpdate(Conta.getId(), Conta);
 		assertTrue(response.getStatusInfo().getStatusCode() == Status.OK.getStatusCode());
 	}
 	
 	
 	@Test
 	void testContaDelete() {
-		Response response = service.ContaDelete(id_conta);
+		Response response = service.ContaDelete(Conta.getId());
 		assertTrue(response.getStatusInfo().getStatusCode() == Status.OK.getStatusCode());
 	}
 
